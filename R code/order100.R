@@ -1,0 +1,21 @@
+pro6ac<-read.table("d:/result/9pro-ac-lasso.txt")
+pro6ac<-pro6ac[2:501,]
+pro6ac<-as.matrix(pro6ac)
+pro6ac<-matrix(as.numeric(pro6ac),nrow=nrow(pro6ac))
+pro6ac<-pro6ac[order(pro6ac[,1],decreasing=T),]
+errorsum<-0;
+plussum<-0;
+pro6ac<-pro6ac[1:60,]
+average<-mean(pro6ac[,1])
+for(i in 1:60)
+{
+  temperror<-(pro6ac[i,1]-pro6ac[i,2])*(pro6ac[i,1]-pro6ac[i,2])
+  errorsum<-errorsum+temperror
+  tempsum=(pro6ac[i,1]-average)*(pro6ac[i,1]-average)
+  plussum=plussum+tempsum
+}
+print(1-(errorsum/plussum))
+PCC<-sqrt(1-(errorsum/plussum))
+print(PCC)
+RMSE<-sqrt(errorsum/60)
+print(RMSE)
