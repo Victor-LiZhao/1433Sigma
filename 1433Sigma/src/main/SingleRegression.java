@@ -411,7 +411,7 @@ public class SingleRegression {
 		Double[] tempArray=newList.get(0);
 		newList.clear();
 		newList.addAll(SMOTERUtils.getSmoteR(list,tempArray, list.get(0).length - 1,
-				1200.0, 500, 100, 3));
+				1000.0, 300, 50, 5));
 		return newList;
 	}
 

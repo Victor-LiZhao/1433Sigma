@@ -189,7 +189,7 @@ public class TestTrend {
 //			writeCoupleData(i,list,coupleUnitList);
 			//String outfilename1="d:pcvOriginal/single-"+i+".txt";
 			//String outfilename1="d:pcvAC/single-"+i+".txt";
-			String outfilename="d:data/new-9pro-ac-smote-1200-o5/single-"+i+".txt";
+			String outfilename="d:data/new-9pro-1000-o3-u50/single-"+i+".txt";
 			//SingleRegression.handleAndWrite(node,dataSet, map,outfilename1,outfilename1);
 			//SingleRegression.handleAndWrite_new(node,dataSet,outfilename1);
 			//ACUtils.handleAndWrite(node, dataSet, outfilename1);

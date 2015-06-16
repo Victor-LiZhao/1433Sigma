@@ -10,6 +10,7 @@ tmp/
 *.tmp
 *.bak
 *.swp
+*.class
 *~.nib
 local.properties
 .classpath
@@ -28,3 +29,4 @@ local.properties
 # PDT-specific
 .buildpath
 
+/1433Sigma/
