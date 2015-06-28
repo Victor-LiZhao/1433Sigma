@@ -95,6 +95,7 @@ public class SMOTERUtils {
 			int under, int allRare) {
 		List<Double[]> newnormList = new ArrayList<Double[]>();
 		int size = (int) Math.round((under * 1.0 / 100) * allRare);
+		if(allRare<=50) return normList;
 		if (size >= normList.size())
 			size = normList.size();
 		//System.out.println("new norm size=" + size + "normList size="+ normList.size());

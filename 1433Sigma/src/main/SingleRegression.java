@@ -378,7 +378,7 @@ public class SingleRegression {
 
 			List<Double> listNode2 = ACUtils.getACFeatures(node2);
 			for (int i = 0; i < listNode2.size(); ++i) {
-				//tempList.add(listNode2.get(i));
+				tempList.add(listNode2.get(i));
 			}
 			tempList.add(Double.valueOf(node2.getRf()));
 			Double[] tempArray = new Double[tempList.size()];
@@ -401,7 +401,7 @@ public class SingleRegression {
 			}
 			List<Double> listNode = ACUtils.getACFeatures(node);
 			for (int j = 0; j < listNode.size(); ++j) {
-				//tempList.add(listNode.get(j));
+				tempList.add(listNode.get(j));
 			}
 			tempList.add(Double.valueOf(node.getRf()));
 			Double[] tempArray = new Double[tempList.size()];
@@ -411,7 +411,7 @@ public class SingleRegression {
 		Double[] tempArray=newList.get(0);
 		newList.clear();
 		newList.addAll(SMOTERUtils.getSmoteR(list,tempArray, list.get(0).length - 1,
-				1000.0, 300, 50, 5));
+				1000.0, 200, 200, 3));
 		return newList;
 	}
 

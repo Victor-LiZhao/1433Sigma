@@ -16,8 +16,8 @@ import beans.RSFValue;
 public class FileUtils {
 	public static List<Node> readData()
 	{
-		String filename="sigma2.txt";
-		//String filename="sigma_right.txt";
+		//String filename="sigma2.txt";
+		String filename="metadata/zeta_right.txt";
 		BufferedReader br = null;
 		File file=new File(filename);
 		List<Node> nodes=new ArrayList<Node>();
@@ -46,8 +46,8 @@ public class FileUtils {
 	}
 	//get pcv matrix
 	public static List<PCValue> getPcvMatrix(){
-		//String filename="newPCV.txt";
-		String filename="pcv.txt";
+		String filename="newPCV-norm.txt";
+		//String filename="pcv.txt";
 		BufferedReader br = null;
 		File file=new File(filename);
 		List<PCValue> nodes=new ArrayList<PCValue>();

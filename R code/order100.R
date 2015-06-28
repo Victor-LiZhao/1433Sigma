@@ -1,4 +1,4 @@
-pro6ac<-read.table("d:/result/9pro-ac-smote-900-o5.txt")
+pro6ac<-read.table("d:/result/zeta-left-9pro-ac.txt")
 order<-60
 pro6ac<-pro6ac[2:501,]
 pro6ac<-as.matrix(pro6ac)

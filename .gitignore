@@ -30,3 +30,5 @@ local.properties
 .buildpath
 
 /1433Sigma/
+
+*.class
