@@ -1,5 +1,6 @@
 setwd("d:/analysis")
 
+# scatter the predicted value and true value
 #get the source data
 tablel<-read.csv("result-left.csv")
 tabler<-read.csv("result-right.csv")
