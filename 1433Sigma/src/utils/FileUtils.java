@@ -14,10 +14,9 @@ import beans.PCValue;
 import beans.RSFValue;
 
 public class FileUtils {
-	public static List<Node> readData()
+	public static List<Node> readData(String filename)
 	{
 		//String filename="sigma2.txt";
-		String filename="metadata/zeta_right.txt";
 		BufferedReader br = null;
 		File file=new File(filename);
 		List<Node> nodes=new ArrayList<Node>();

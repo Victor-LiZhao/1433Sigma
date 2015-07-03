@@ -311,10 +311,13 @@ public class SingleRegression {
 	public static void handleAndWrite_All(Node node2, List<Node> nodes,
 			String outfilename) {
 		File file = new File(outfilename);
+		//如果文件夹不存在则创建    
+
 		PrintWriter pw = null;
 		try {
 			pw = new PrintWriter(new FileWriter(file));
 
+			pw.print(node2.getSeq()+"\t");
 			for (int i = 0; i < 3; i++) {
 				Map<String, Double> map = FeatureUtils.featureMap.get(node2
 						.getSeq().charAt(i));
@@ -332,6 +335,7 @@ public class SingleRegression {
 			}
 			pw.print(Double.valueOf(node2.getRf()).floatValue() + "\n");
 			for (Node node : nodes) {
+				pw.print(node.getSeq()+"\t");
 				for (int i = 0; i < 3; i++) {
 					Map<String, Double> map = FeatureUtils.featureMap.get(node
 							.getSeq().charAt(i));

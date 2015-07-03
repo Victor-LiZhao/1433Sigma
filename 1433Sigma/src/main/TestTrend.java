@@ -31,6 +31,7 @@ public class TestTrend {
 
 	
 	
+
 	public static UnitSigmas getUnit(Node node1,Node node2){
 		
 		double xs[]=new double[3]; 
@@ -176,27 +177,14 @@ public class TestTrend {
 	}
 	public static void main(String[] args) {
 		
-		List<Node> list=FileUtils.readData();
-//		List<PCValue> listPcv=FileUtils.getPcvMatrix();
-//		Map<Character,PCValue> map=PCVUtils.makePCVMap(listPcv);
-		//List<UnitSigmas> list2=handle(list);
-		//writeData(list2);
-		for(int i=0;i<500;++i)
-		{
-			Node node=list.get(i);
-			List<Node> dataSet=getDataSet(i,list);
-//			List<CoupleUnit> coupleUnitList=getCoupleUnitList(dataSet,map);
-//			writeCoupleData(i,list,coupleUnitList);
-			//String outfilename1="d:pcvOriginal/single-"+i+".txt";
-			//String outfilename1="d:pcvAC/single-"+i+".txt";
-			String outfilename="d:data-norm/zeta-right-9pro-ac/single-"+i+".txt";
-			//SingleRegression.handleAndWrite(node,dataSet, map,outfilename1,outfilename1);
-			//SingleRegression.handleAndWrite_new(node,dataSet,outfilename1);
-			//ACUtils.handleAndWrite(node, dataSet, outfilename1);
-			//List<Double[]> newlist=SingleRegression.handle(node, dataSet);
-			//SingleRegression.writeNewData(newlist,outfilename);
-			SingleRegression.handleAndWrite_All( node,dataSet, outfilename);
-		}
+//		List<Node> list=FileUtils.readData();
+//		for(int i=0;i<500;++i)
+//		{
+//			Node node=list.get(i);
+//			List<Node> dataSet=getDataSet(i,list);
+//			String outfilename="d:data-norm/zeta-right-9pro-ac/single-"+i+".txt";
+//			SingleRegression.handleAndWrite_All( node,dataSet, outfilename);
+//		}
 		
 //  预测rsf代码
 //		List<Node> list=FileUtils.readData();
@@ -214,37 +202,53 @@ public class TestTrend {
 //		}
 		
 		
-//     预测所有8000种可能
-//		List<Node> list=FileUtils.readData();
-//		List<PCValue> listPcv=FileUtils.getPcvMatrix();
-//		Map<Character,PCValue> map=PCVUtils.makePCVMap(listPcv);
-//		String aa="RHKDESTNQCGPAILMFWYV";
-//		int sum=0;
-//		int i=0,j=0,k=0;
-//		for(i=0;i<20;i++)
-//			for(j=0;j<20;j++)
-//				for(k=0;k<20;k++)
-//				{
-//					List <Node> dataSet=null;
-//					Node node=null;
+     //预测所有8000种可能
+		String istype="zeta";
+		String position="right";
+		String filename="metadata/"+istype+"_"+position+".txt";
+		String outfilename="d:allData/"+istype+"/"+istype+"-"+position+"/";
+		File filetemp = new File("d:allData/"+istype);
+		if  (!filetemp .exists()  && !filetemp .isDirectory())      
+		{       
+		    System.out.println("//不存在");  
+		    filetemp .mkdir();    
+		} 
+		File filetemp1 = new File("d:allData/"+istype+"/"+istype+"-"+position);
+		if  (!filetemp1 .exists()  && !filetemp1 .isDirectory())      
+		{       
+		    System.out.println("//不存在");  
+		    filetemp1 .mkdir();    
+		} 
+		List<Node> list=FileUtils.readData(filename);
+		//List<PCValue> listPcv=FileUtils.getPcvMatrix();
+		//Map<Character,PCValue> map=PCVUtils.makePCVMap(listPcv);
+		String aa="RHKDESTNQCGPAILMFWYV";
+		int sum=0;
+		int i=0,j=0,k=0;
+		for(i=0;i<20;i++)
+			for(j=0;j<20;j++)
+				for(k=0;k<20;k++)
+				{
+					List <Node> dataSet=null;
+					Node node=null;
 //					if(sum<500){
 //						node=list.get(sum);
 //						dataSet=getDataSet_All(node.getSeq(),list);
 //					}
 //					else
 //					{
-//					String seq=String.valueOf(aa.charAt(i))+String.valueOf(aa.charAt(j))+String.valueOf(aa.charAt(k));
-//					node=new Node();
-//					node.setSeq(seq);
-//					node.setRf(-9999.999);
-//					node.setRank(-10000);
-//					
-//					dataSet=getDataSet_All(seq, list);
+					String seq=String.valueOf(aa.charAt(i))+String.valueOf(aa.charAt(j))+String.valueOf(aa.charAt(k));
+					node=new Node();
+					node.setSeq(seq);
+					node.setRf(-9999.999);
+					node.setRank(-10000);
+					
+					dataSet=getDataSet_All(sum,seq, list);
 //					}
-//					String outfilename1="d:pcvOriginal/single-"+sum+".txt";
-//					sum++;
-//					SingleRegression.handleAndWrite(node,dataSet, map,outfilename1,outfilename1);
-//				}
+					String outfilename1=outfilename+istype+"-"+sum+".txt";
+					sum++;
+					SingleRegression.handleAndWrite_All( node,dataSet, outfilename1);
+				}
 	}
 
 	/**
@@ -381,7 +385,7 @@ public class TestTrend {
 	 * @param list 所有数据集合
 	 * @return  与此node相关的数据集合
 	 */
-	private static List<Node> getDataSet_All(String seq, List<Node> list) {
+	private static List<Node> getDataSet_All(int num,String seq, List<Node> list) {
 		List<Node> dataSet=new ArrayList<Node>();
 		for(int i=0;i<list.size();++i){
 			Node node=list.get(i);
@@ -398,7 +402,7 @@ public class TestTrend {
 				}
 			}
 		}
-		System.out.println("seq is:\t"+seq+"\t"+"relative dataSet size is:\t" +dataSet.size());
+		System.out.println(num+"--"+"seq is:\t"+seq+"\t"+"relative dataSet size is:\t" +dataSet.size());
 		
 		
 		return dataSet;
@@ -418,7 +422,7 @@ public class TestTrend {
 					for(k=0;k<20;k++)
 					{
 						String seq=String.valueOf(aa.charAt(i))+String.valueOf(aa.charAt(j))+String.valueOf(aa.charAt(k));
-						List <Node> dataSet=getDataSet_All(seq, list);
+						List <Node> dataSet=getDataSet_All(i,seq, list);
 						pw.println("seq is:\t"+seq+"\t"+"relative dataSet size is:\t" +dataSet.size());
 					}
 			}
