@@ -26,12 +26,16 @@ fun.getData <- function(index,type="default")
   return(result)
 }
 
-for(i in 3:8)
+for(i in 3:3)
 {
+  x11()
   result<-fun.getData(i)
+  epsname<-paste("scatter-sigma-",i,".jpeg",sep="")
   name<-paste("scatter-sigma-",i,".jpeg",sep="")
   plotname<-paste("scatter-sigma-",i,".jpeg",sep="")
   jpeg(file=name)
   plot(result[,2:3],main=plotname)
+  dev.copy(device = x11)
+  dev.print(postscript, "foo.pdf", onefile=TRUE, horizontal=FALSE, paper="special")
   dev.off()
 }
