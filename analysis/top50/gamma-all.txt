@@ -1,4 +1,3 @@
-seqtop500
 RCCWCS
 KCCVCN
 RCAWCQ

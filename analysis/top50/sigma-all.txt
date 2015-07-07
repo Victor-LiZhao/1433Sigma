@@ -1,4 +1,3 @@
-seqtop500
 RCKLCS
 KCKVCM
 RCRWCS

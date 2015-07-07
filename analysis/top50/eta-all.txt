@@ -1,4 +1,3 @@
-seqtop500
 RCCHCW
 RCRHCI
 KCCSCY
